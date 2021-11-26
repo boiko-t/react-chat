@@ -1,7 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniExtractCSSPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
+  entry: './src/index.js',
   // Where files should be sent once they are bundled
   output: {
     path: path.join(__dirname, '/dist'),
@@ -18,30 +21,23 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
         test: /\.s[ac]ss$/i,
         use: [
-          'style-loader',
+          MiniExtractCSSPlugin.loader,
           'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: ['autoprefixer'],
-              },
-            },
-          },
+          'postcss-loader',
           'sass-loader',
         ],
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
+  optimization: {
+    minimizer: [new CssMinimizerPlugin()],
+  },
+  plugins: [
+    new MiniExtractCSSPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'src', 'index.html'),
+    }),
+  ],
 };
