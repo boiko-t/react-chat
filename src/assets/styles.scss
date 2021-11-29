@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$header-height: 4rem;
+
+.app-header {
+  height: $header-height;
+}
+
+.h-screen-no-header {
+  height: calc(100vh - $header-height);
+  overflow: auto;
+}
+
+.scrollbar {
+  &-y {
+    &::-webkit-scrollbar {
+      @apply w-2;
+    }
+  }
+
+  &-color-primary {
+    &::-webkit-scrollbar-track {
+      @apply bg-primary-100;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      @apply bg-primary-400;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      @apply bg-primary-500;
+    }
+  }
+}
