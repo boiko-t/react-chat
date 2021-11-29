@@ -1,9 +1,18 @@
-import './App.scss';
+import './assets/styles.scss';
+import ChatPreviewsList from './components/ChatPreviewsList';
+import ChatView from './components/ChatView';
+import Header from './components/Header';
 
-export function App() {
+const App = () => {
   return (
-    <main className="h-screen	bg-purple-100">
-      <h2 className="text-2xl">Hello world</h2>
-    </main>
+    <div className="h-screen overflow-hidden bg-primary-50">
+      <Header />
+      <div className="flex">
+        <ChatPreviewsList />
+        <ChatView />
+      </div>
+    </div>
   );
-}
+};
+
+export default App;
