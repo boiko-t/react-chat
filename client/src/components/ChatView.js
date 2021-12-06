@@ -1,6 +1,6 @@
 const ChatView = ({ id }) => {
   return (
-    <div className="scrollbar-y scrollbar-color-primary h-screen-no-header w-2/3">
+    <div className="scrollbar-y scrollbar-color-primary h-screen-no-header w-2/3 bg-primary-100">
       {messages.map((message, i) => (
         <div key={i}>
           <p>{message.text}</p>
