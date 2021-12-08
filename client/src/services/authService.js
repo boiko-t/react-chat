@@ -1,6 +1,7 @@
 export const logIn = async (googleData) => {
-  const res = await fetch('http://127.0.0.1:3000/api/v1/auth/google', {
+  const res = await fetch('http://127.0.0.1:3000/api/login-google', {
     method: 'POST',
+    credentials: 'include',
     body: JSON.stringify({
       token: googleData.tokenId,
     }),
@@ -8,7 +9,12 @@ export const logIn = async (googleData) => {
       'Content-Type': 'application/json',
     },
   });
-  const data = await res.json();
-  // sessionStorage.setItem('userId', data._id);
-  return data;
+
+  if (res.ok) {
+    const data = await res.json();
+    return data;
+  } else {
+    console.log(`${res.status} - ${res.statusText}`);
+    throw new Error(res.status);
+  }
 };

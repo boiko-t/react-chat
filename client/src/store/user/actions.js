@@ -7,7 +7,6 @@ export const LOG_OUT_REQUESTED = 'LOG_OUT_REQUESTED';
 export const requestLogIn = (data) => async (dispatch) => {
   try {
     const response = await logIn(data);
-    console.log(response);
     dispatch(logInSuccessful(response));
   } catch (error) {
     console.log(error);

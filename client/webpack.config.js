@@ -6,17 +6,20 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.js',
+  devtool: 'inline-source-map',
   // Where files should be sent once they are bundled
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'index.bundle.js',
   },
-  // Rules of how webpack will take our files, complie & bundle them for the browser
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /nodeModules/,
+        test: /\.(ts|js)x?$/i,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
         },
@@ -36,6 +39,7 @@ module.exports = {
       },
     ],
   },
+
   optimization: {
     minimizer: [new CssMinimizerPlugin()],
   },
