@@ -1,9 +1,7 @@
-import dotenv from 'dotenv';
 import { OAuth2Client } from 'google-auth-library';
 // import mongoose from 'mongoose';
 // import { User } from './db.js';
 
-dotenv.config();
 const client = new OAuth2Client(process.env.CLIENT_ID);
 
 export const verifyUser = async (token) => {
