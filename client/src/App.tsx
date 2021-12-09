@@ -1,31 +1,35 @@
-import { useEffect, FunctionComponent } from 'react';
-import { Provider } from 'react-redux';
+import { FunctionComponent, useEffect } from 'react';
 
-import ChatPreviewsList from './components/ChatPreviewsList';
-import ChatView from './components/ChatView';
-import Header from './components/Header';
-import LogIn from './components/LogIn';
-import store from './store';
+import AppLoaderPage from './pages/AppLoaderPage';
+import LoginPage from './pages/LoginPage';
+import ChatPage from './pages/ChatPage';
 
-import './assets/styles.scss';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from './store';
+import { checkAuth } from './store/user/actions';
+import ProtectedChatPage from './pages/ChatPage';
 
 const App: FunctionComponent = () => {
+  const dispatch = useDispatch();
+  const { isAuthLoading } = useSelector((state: RootState) => state.auth);
+
   useEffect(() => {
-    console.log('hi');
+    console.log('Checking auth...');
+    dispatch(checkAuth());
   }, []);
 
+  if (isAuthLoading) {
+    return <AppLoaderPage />;
+  }
+
   return (
-    <Provider store={store}>
-      <div className="h-screen overflow-hidden">
-        <LogIn />
-        <Header />
-        <div className="flex">
-          <ChatPreviewsList />
-          <ChatView />
-        </div>
-        test
-      </div>
-    </Provider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<ProtectedChatPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

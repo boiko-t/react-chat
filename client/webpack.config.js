@@ -5,7 +5,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   devtool: 'inline-source-map',
   // Where files should be sent once they are bundled
   output: {
