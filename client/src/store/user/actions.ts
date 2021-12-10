@@ -1,4 +1,8 @@
-import { getGoogleUser, getCurrentUser } from '../../services/authService';
+import {
+  getGoogleUser,
+  getCurrentUser,
+  logOutCurrentUser,
+} from '../../services/authService';
 import { APIError } from '../../types/APIError';
 import { User } from '../../types/User';
 
@@ -33,6 +37,16 @@ export const checkAuth = () => async (dispatch) => {
     const error = e as APIError;
     console.log(error.message);
     dispatch(logInFailed(error.status));
+  }
+};
+
+export const logOut = () => async (dispatch) => {
+  try {
+    await logOutCurrentUser();
+    dispatch(requestLogOut());
+  } catch (e) {
+    const error = e as APIError;
+    console.log(error.message);
   }
 };
 

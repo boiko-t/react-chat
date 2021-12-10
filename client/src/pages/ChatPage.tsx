@@ -10,7 +10,7 @@ import { RootState } from '../store';
 const ChatPage: FunctionComponent = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="flex">
         <ChatPreviewsList />
         <ChatView />

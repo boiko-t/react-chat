@@ -1,5 +1,10 @@
 import { User } from '../../types/User';
-import { LOG_IN_SUCCEEDED, LOG_IN_FAILED, AuthActionType } from './actions';
+import {
+  LOG_IN_SUCCEEDED,
+  LOG_IN_FAILED,
+  LOG_OUT_REQUESTED,
+  AuthActionType,
+} from './actions';
 
 export interface AuthState {
   user: User;
@@ -25,6 +30,13 @@ export const authReducer = (
     };
   }
   if (action.type === LOG_IN_FAILED) {
+    return {
+      user: {} as User,
+      isLoginFailed: true,
+      isAuthLoading: false,
+    };
+  }
+  if (action.type === LOG_OUT_REQUESTED) {
     return {
       user: {} as User,
       isLoginFailed: true,

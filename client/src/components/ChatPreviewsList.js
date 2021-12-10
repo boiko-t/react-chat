@@ -1,18 +1,25 @@
 import ChatPreview from './ChatPreview';
+import CurrentUserInfo from './CurrentUserInfo';
 
 const ChatPreviewsList = ({ dialogs }) => {
   return (
-    <div className="scrollbar-y scrollbar-color-primary h-screen-no-header w-1/3">
-      {data.map((dialog) => (
-        <ChatPreview
-          key={dialog.id}
-          id={dialog.id}
-          avatar={dialog.avatar}
-          name={dialog.name}
-          preview={dialog.preview}
-          isOpened={dialog.isOpened}
-        />
-      ))}
+    <div className="h-screen w-1/3">
+      <CurrentUserInfo className="h-20" />
+      <div
+        className="scrollbar-y overflow-y-auto scrollbar-color-primary"
+        style={{ height: 'calc(100vh - 5rem)' }}
+      >
+        {data.map((dialog) => (
+          <ChatPreview
+            key={dialog.id}
+            id={dialog.id}
+            avatar={dialog.avatar}
+            name={dialog.name}
+            preview={dialog.preview}
+            isOpened={dialog.isOpened}
+          />
+        ))}
+      </div>
     </div>
   );
 };

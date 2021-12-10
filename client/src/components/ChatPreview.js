@@ -5,7 +5,7 @@ const ChatPreview = ({ id, avatar, name, preview, isOpened }) => {
   const [backgroundClass, setBackgroundClass] = useState('');
 
   useEffect(() => {
-    setBackgroundClass(isOpened ? 'bg-accent-800' : 'bg-accent-700');
+    setBackgroundClass(isOpened ? 'bg-primary-700' : 'bg-primary-600');
   }, [isOpened]);
 
   return (
