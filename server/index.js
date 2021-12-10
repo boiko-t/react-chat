@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 
-import { getUserByToken, addGoogleUser } from './routes/auth.js';
+import { getUserByToken, addGoogleUser, logoutUser } from './routes/auth.js';
 dotenv.config();
 
 const hostname = '127.0.0.1';
@@ -25,7 +25,7 @@ server.use(bp.urlencoded({ extended: true }));
 server.use(bp.json());
 
 server.get('/api/get-user', getUserByToken);
-
+server.post('/api/logout', logoutUser);
 server.post('/api/login-google', addGoogleUser);
 
 server.get('/', (req, res) => {

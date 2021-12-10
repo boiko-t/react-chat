@@ -40,6 +40,15 @@ export const getUserByToken = async (req, res) => {
   }
 };
 
+export const logoutUser = async (req, res) => {
+  res.clearCookie('JWT', {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+  });
+  res.sendStatus(200);
+};
+
 export const addGoogleUser = async (req, res) => {
   const userId = verifyAccessToken(req.cookies.JWT);
 
