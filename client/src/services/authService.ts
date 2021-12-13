@@ -6,7 +6,7 @@ const SERVER_URL = 'http://127.0.0.1:3000/';
 export const getGoogleUser: (googleData: any) => Promise<User> | void = async (
   googleData
 ) => {
-  const res = await fetch(`${SERVER_URL}api/login-google`, {
+  const res = await fetch(`${SERVER_URL}auth/login-google`, {
     method: 'POST',
     credentials: 'include',
     body: JSON.stringify({
@@ -26,7 +26,7 @@ export const getGoogleUser: (googleData: any) => Promise<User> | void = async (
 };
 
 export const getCurrentUser: () => Promise<User> | void = async () => {
-  const res = await fetch(`${SERVER_URL}api/get-user`, {
+  const res = await fetch(`${SERVER_URL}auth/current-user`, {
     method: 'GET',
     credentials: 'include',
     headers: {
@@ -43,7 +43,7 @@ export const getCurrentUser: () => Promise<User> | void = async () => {
 };
 
 export const logOutCurrentUser: () => Promise<boolean> | void = async () => {
-  const res = await fetch(`${SERVER_URL}api/logout`, {
+  const res = await fetch(`${SERVER_URL}auth/logout`, {
     method: 'POST',
     credentials: 'include',
     headers: {

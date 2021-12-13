@@ -24,9 +24,9 @@ server.use(cookieParser());
 server.use(bp.urlencoded({ extended: true }));
 server.use(bp.json());
 
-server.get('/api/get-user', getUserByToken);
-server.post('/api/logout', logoutUser);
-server.post('/api/login-google', addGoogleUser);
+server.get('/auth/current-user', getUserByToken);
+server.post('/auth/logout', logoutUser);
+server.post('/auth/login-google', addGoogleUser);
 
 server.get('/', (req, res) => {
   res.json('Hello');
