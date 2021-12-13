@@ -1,6 +1,6 @@
 import { OAuth2Client } from 'google-auth-library';
 import jwt from 'jsonwebtoken';
-import { addUserIfNotExists, getUserById } from '../db.js';
+import { addUserIfNotExists, getUserById } from '../db/users.js';
 
 const googleAuthClient = new OAuth2Client(process.env.CLIENT_ID);
 const BASIC_COOKIE_OPTIONS = {
