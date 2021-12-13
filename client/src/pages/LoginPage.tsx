@@ -1,6 +1,6 @@
 import GoogleLogin from 'react-google-login';
 import { useDispatch, useSelector } from 'react-redux';
-import { logInGoogle } from './../store/user/actions';
+import { logInGoogle } from '../store/auth/actions';
 import { RootState } from '../store';
 import { FunctionComponent, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';

@@ -3,7 +3,7 @@ import { GoogleLogout } from 'react-google-login';
 import { useDispatch, useSelector } from 'react-redux';
 import { IconLogout } from '../assets/icons';
 import { RootState } from '../store';
-import { logOut } from '../store/user/actions';
+import { logOut } from '../store/auth/actions';
 import UserImage from './UserImage';
 
 const CurrentUserInfo: FunctionComponent<{ className: string }> = ({

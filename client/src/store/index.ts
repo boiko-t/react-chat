@@ -1,20 +1,18 @@
-import {
-  createStore,
-  combineReducers,
-  applyMiddleware,
-  compose,
-  Store,
-} from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { AuthActionType } from './user/actions';
-import { AuthState, authReducer } from './user/reducer';
+import { AuthActionType } from './auth/actions';
+import { AuthState, authReducer } from './auth/reducer';
+import { UsersActionType } from './users/actions';
+import { usersReducer, UsersState } from './users/reducer';
 
 export interface RootState {
   auth: AuthState;
+  users: UsersState;
 }
 
 const reducer = combineReducers({
   auth: authReducer,
+  users: usersReducer,
 });
 
 const enhancers = compose(
@@ -22,7 +20,9 @@ const enhancers = compose(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-export const store = createStore<RootState, AuthActionType, any, any>(
+type CombinedActionType = AuthActionType | UsersActionType;
+
+export const store = createStore<RootState, CombinedActionType, any, any>(
   reducer,
   enhancers
 );

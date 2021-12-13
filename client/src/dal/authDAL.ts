@@ -1,20 +1,16 @@
 import { APIError } from '../types/APIError';
 import { User } from '../types/User';
-
-const SERVER_URL = 'http://127.0.0.1:3000/';
+import { BASIC_FETCH_PARAMETERS, SERVER_URL } from './common';
 
 export const getGoogleUser: (googleData: any) => Promise<User> | void = async (
   googleData
 ) => {
   const res = await fetch(`${SERVER_URL}auth/login-google`, {
+    ...BASIC_FETCH_PARAMETERS,
     method: 'POST',
-    credentials: 'include',
     body: JSON.stringify({
       token: googleData.tokenId,
     }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
   });
 
   if (res.ok) {
@@ -27,11 +23,8 @@ export const getGoogleUser: (googleData: any) => Promise<User> | void = async (
 
 export const getCurrentUser: () => Promise<User> | void = async () => {
   const res = await fetch(`${SERVER_URL}auth/current-user`, {
+    ...BASIC_FETCH_PARAMETERS,
     method: 'GET',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    },
   });
 
   if (res.ok) {
@@ -44,11 +37,8 @@ export const getCurrentUser: () => Promise<User> | void = async () => {
 
 export const logOutCurrentUser: () => Promise<boolean> | void = async () => {
   const res = await fetch(`${SERVER_URL}auth/logout`, {
+    ...BASIC_FETCH_PARAMETERS,
     method: 'POST',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    },
   });
 
   if (res.ok) {

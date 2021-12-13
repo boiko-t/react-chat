@@ -6,19 +6,21 @@ const ChatPreviewsList = ({ dialogs }) => {
     <div className="h-screen w-1/3">
       <CurrentUserInfo className="h-20" />
       <div
-        className="scrollbar-y overflow-y-auto scrollbar-color-primary"
+        className="scrollbar-y overflow-y-auto scrollbar-color-primary bg-primary-600"
         style={{ height: 'calc(100vh - 5rem)' }}
       >
-        {data.map((dialog) => (
-          <ChatPreview
-            key={dialog.id}
-            id={dialog.id}
-            avatar={dialog.avatar}
-            name={dialog.name}
-            preview={dialog.preview}
-            isOpened={dialog.isOpened}
-          />
-        ))}
+        {dialogs
+          ? dialogs.map((dialog) => (
+              <ChatPreview
+                key={dialog.id}
+                id={dialog.id}
+                avatar={dialog.avatar}
+                name={dialog.name}
+                preview={dialog.preview}
+                isOpened={dialog.isOpened}
+              />
+            ))
+          : 'No conversations started'}
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import {
   getGoogleUser,
   getCurrentUser,
   logOutCurrentUser,
-} from '../../services/authService';
+} from '../../dal/authDAL';
 import { APIError } from '../../types/APIError';
 import { User } from '../../types/User';
 
@@ -68,7 +68,7 @@ const logInFailed: (statusCode: number) => AuthActionType = (statusCode) => {
   };
 };
 
-export const requestLogOut = () => {
+const requestLogOut = () => {
   return {
     type: LOG_OUT_REQUESTED,
   };
