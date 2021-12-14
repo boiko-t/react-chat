@@ -22,7 +22,10 @@ const LoginPage: FunctionComponent = () => {
 
   return (
     <div className="h-screen overflow-hidden flex flex-col justify-center items-center bg-primary-200">
-      <IconUser className="text-primary-500 h-28 w-28 mx-auto mb-3" />
+      <IconUser
+        className="text-primary-500 h-28 w-28 mx-auto mb-3"
+        strokeWidth={3}
+      />
       <GoogleLogin
         clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID_PUBLIC as string}
         onSuccess={(data) => dispatch(logInGoogle(data))}

@@ -1,27 +1,23 @@
 import ChatPreview from './ChatPreview';
 import CurrentUserInfo from './CurrentUserInfo';
+import UsersFinder from './UsersFinder';
 
 const ChatPreviewsList = ({ dialogs }) => {
   return (
-    <div className="h-screen w-1/3">
-      <CurrentUserInfo className="h-20" />
-      <div
-        className="scrollbar-y overflow-y-auto scrollbar-color-primary bg-primary-600"
-        style={{ height: 'calc(100vh - 5rem)' }}
-      >
-        {dialogs
-          ? dialogs.map((dialog) => (
-              <ChatPreview
-                key={dialog.id}
-                id={dialog.id}
-                avatar={dialog.avatar}
-                name={dialog.name}
-                preview={dialog.preview}
-                isOpened={dialog.isOpened}
-              />
-            ))
-          : 'No conversations started'}
-      </div>
+    <div className="h-screen scrollbar-y overflow-y-auto scrollbar-color-primary">
+      {/* <div className="h-20 bg-primary-700 text-primary-100 text-2xl pl-3 flex items-center">
+        Chats
+      </div> */}
+      {data.map((dialog) => (
+        <ChatPreview
+          key={dialog.id}
+          id={dialog.id}
+          avatar={dialog.avatar}
+          name={dialog.name}
+          preview={dialog.preview}
+          isOpened={dialog.isOpened}
+        />
+      ))}
     </div>
   );
 };

@@ -10,8 +10,9 @@ module.exports = {
       },
     },
     colors: {
-      accent: colors.green,
-      primary: colors.trueGray,
+      accent: colors.indigo,
+      primary: colors.gray,
+      transparent: 'transparent',
     },
   },
   variants: {

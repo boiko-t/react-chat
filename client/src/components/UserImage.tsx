@@ -13,7 +13,7 @@ const UserImage: FunctionComponent<UserImageProps> = (props) => {
   return (
     <img
       src={picture || defaultDialogAvatar}
-      className={`${className} h-14 w-14 rounded-full`}
+      className={`${className} h-12 w-12 rounded-full`}
       alt={`Picture of ${name}` || 'User Picture'}
     />
   );

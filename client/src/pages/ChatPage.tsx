@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 
-import ChatPreviewsList from '../components/ChatPreviewsList';
+import ChatControlView from '../components/ChatControlView';
 import ChatView from '../components/ChatView';
 import Header from '../components/Header';
 import { RootState } from '../store';
@@ -12,7 +12,7 @@ const ChatPage: FunctionComponent = () => {
     <>
       {/* <Header /> */}
       <div className="flex">
-        <ChatPreviewsList />
+        <ChatControlView />
         <ChatView />
       </div>
     </>
