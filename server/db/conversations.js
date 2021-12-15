@@ -41,11 +41,10 @@ export const getUsersConversations = async (userId) => {
   const doc = await Conversation.find({ members: userId }).lean().exec();
 
   for await (let item of doc) {
-    // const item = doc[i];
     const memberId = item.members.find((id) => id !== userId);
     const member = await getUserById(memberId);
-    item.conversationName = member.name;
-    item.conversationPicture = member.picture;
+    item.name = member.name;
+    item.picture = member.picture;
   }
 
   return doc;

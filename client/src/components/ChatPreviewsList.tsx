@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, FunctionComponent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchConversations } from '../store/conversation/actions';
+import { fetchConversations } from '../store/chat/actions';
 import ChatPreview from './ChatPreview';
 import { RootState } from '../store';
 
-const ChatPreviewsList = () => {
+const ChatPreviewsList: FunctionComponent = () => {
   const dispatch = useDispatch();
-  const conversations = useSelector((state: RootState) => state.conversations);
+  const { conversations } = useSelector((state: RootState) => state.chat);
 
   useEffect(() => {
     dispatch(fetchConversations());
@@ -14,15 +14,8 @@ const ChatPreviewsList = () => {
 
   return (
     <div className="h-screen scrollbar-y overflow-y-auto scrollbar-color-primary">
-      {conversations.map((dialog) => (
-        <ChatPreview
-          key={dialog._id}
-          id={dialog._id}
-          avatar={dialog.conversationPicture}
-          name={dialog.conversationName}
-          preview={dialog.messages[dialog.messages.length - 1].text}
-          isOpened={false}
-        />
+      {conversations.map((conversation) => (
+        <ChatPreview key={conversation._id} conversation={conversation} />
       ))}
     </div>
   );

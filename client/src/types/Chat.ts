@@ -8,8 +8,8 @@ export interface Message {
 
 export interface Conversation {
   _id: string;
-  conversationName: string;
-  conversationPicture: string;
+  name: string;
+  picture: string;
   members: string[];
   messages: Message[];
 }
