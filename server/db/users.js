@@ -1,13 +1,13 @@
 import mongoose from 'mongoose';
 
-const userScheme = mongoose.Schema({
+const userSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   name: String,
   email: String,
   picture: String,
 });
 
-const User = mongoose.model('User', userScheme);
+const User = mongoose.model('User', userSchema);
 
 const addUser = (name, email, picture) => {
   const user = new User({
