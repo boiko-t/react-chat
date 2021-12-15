@@ -44,7 +44,6 @@ export const getUsersConversations = async (userId) => {
     // const item = doc[i];
     const memberId = item.members.find((id) => id !== userId);
     const member = await getUserById(memberId);
-    item.messagePreview = item.messages.pop().text;
     item.conversationName = member.name;
     item.conversationPicture = member.picture;
   }

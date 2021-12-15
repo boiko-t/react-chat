@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './store';
 import { checkAuth } from './store/auth/actions';
 import ProtectedChatPage from './pages/ChatPage';
+import { getConversations } from './dal/conversations';
 
 const App: FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const App: FunctionComponent = () => {
   useEffect(() => {
     console.log('Checking auth...');
     dispatch(checkAuth());
+    getConversations();
   }, []);
 
   if (isAuthLoading) {

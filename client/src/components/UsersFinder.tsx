@@ -14,7 +14,6 @@ const UsersFinder: FunctionComponent<{}> = () => {
 
   return (
     <div className="text-primary-100">
-      {console.log(users)}
       {users.map((user) => (
         <p
           key={user._id}
