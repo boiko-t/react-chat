@@ -2,11 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniExtractCSSPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.tsx',
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   // Where files should be sent once they are bundled
   output: {
     path: path.join(__dirname, '/dist'),
@@ -45,7 +46,7 @@ module.exports = {
   },
 
   optimization: {
-    minimizer: [new CssMinimizerPlugin()],
+    minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
   },
   plugins: [
     new MiniExtractCSSPlugin(),
